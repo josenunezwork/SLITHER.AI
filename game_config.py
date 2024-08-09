@@ -1,22 +1,37 @@
-# game_config.py
-
 class GameConfig:
-    WIDTH = 800
-    HEIGHT = 600
+    # Game dimensions and basic settings
+    WIDTH = 1300
+    HEIGHT = 700
     NUM_SNAKES = 4
     SEGMENT_SIZE = 10
-    INITIAL_FOOD = 10
-    MAX_FOOD = 20
-    MAX_GAMES = 10000
-    RESPAWN_DELAY = 50
-    
-    # Calculate INPUT_SIZE
-    BASE_FEATURES = 5  # snake's own x, y, direction_x, direction_y, length
-    FOOD_FEATURES = 9  # 3 closest food items, each with distance, relative_x, relative_y
-    WALL_DISTANCES = 4  # distance to 4 walls
-    OTHER_SNAKE_FEATURES = 5 * (NUM_SNAKES - 1)  # 5 features per other snake
-    
-    INPUT_SIZE = BASE_FEATURES + FOOD_FEATURES + WALL_DISTANCES + OTHER_SNAKE_FEATURES
-    
-    HIDDEN_SIZE = 256
+    INITIAL_FOOD = 100
+    MAX_FOOD = 410
+    MAX_FRAMES = 10000000
+    FRAME_RATE = 1
+
+    # Snake vision and state
+    INPUT_SIZE =7  
+    HIDDEN_SIZE = 1000  
     OUTPUT_SIZE = 4
+
+    # Actions
+    ACTIONS = [
+        (0, -1),  # Up
+        (1, 0),   # Right
+        (0, 1),   # Down
+        (-1, 0)   # Left
+    ]
+
+    # Learning parameters
+    BATCH_SIZE = 512  
+    MEMORY_SIZE = 10000
+    LEARNING_RATE = 0.001
+    GAMMA = 0.2
+    EPSILON_START = 1.0
+    EPSILON_END = 0.2
+    EPSILON_DECAY = 0.9995
+    TARGET_UPDATE_FREQUENCY = 100
+
+    # Training settings
+    TRAIN_FREQUENCY = 5
+    CHECKPOINT_FREQUENCY = 1000
