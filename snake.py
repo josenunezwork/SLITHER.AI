@@ -16,7 +16,6 @@ class Snake:
     @property
     def head(self):
         return self.segments[0]  
-
     def move(self):
         new_head = (
             (self.head[0] + self.direction[0] * self.segment_size) % self.game_width,
@@ -25,17 +24,11 @@ class Snake:
         self.segments.insert(0, new_head)
         if len(self.segments) > self.length:
             self.segments.pop()
-
     def grow(self, amount=1):
         self.length += amount
-
     def change_direction(self, new_direction):
         if (new_direction[0] * -1, new_direction[1] * -1) != self.direction:
             self.direction = new_direction
-
-    def check_self_collision(self):
-        return self.head in self.segments[1:]
-
     def die(self):
         self.is_alive = False
         self.respawn_timer = GameConfig.FRAME_RATE
